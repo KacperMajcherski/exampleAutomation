@@ -1,3 +1,8 @@
-/.idea/
+#IntelliJ
+.idea
 exampleAutomation.iml
 /out/
+
+#Project
+logs
+build
