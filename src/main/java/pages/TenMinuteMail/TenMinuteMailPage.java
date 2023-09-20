@@ -1,6 +1,8 @@
-package pages;
+package pages.TenMinuteMail;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.Pages;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class TenMinuteMailPage extends Pages {
