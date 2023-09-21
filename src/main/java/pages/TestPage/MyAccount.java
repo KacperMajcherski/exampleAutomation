@@ -1,9 +1,6 @@
 package pages.TestPage;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import pages.Pages;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MyAccount {
@@ -19,9 +16,4 @@ public class MyAccount {
     public SelenideElement welcomeMessage = $x("//p[contains(text(),'Hello')]");
     public SelenideElement accDetailsTab = $x("//a[normalize-space()='Account details']");
     public SelenideElement accDetailsEmailInput = $x("//input[@id='account_email']");
-
-
-
-
-
 }

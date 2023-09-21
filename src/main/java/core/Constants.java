@@ -8,5 +8,4 @@ public final class Constants {
     public final static String randomUsername = TestMain.useRandomUUID();
     public final static String password = "Start123123123!";
     public final static String username = "Tester1234";
-
 }

@@ -49,7 +49,5 @@ public class LoginAndPlaceAnOrder extends TestMain {
         Pages.checkout.placeOrderBtn.should(Condition.visible).click();
         Pages.checkout.checkoutPageTitle.should(Condition.visible);
         Pages.checkout.orderDetailsTable.should(Condition.visible);
-
-
     }
 }

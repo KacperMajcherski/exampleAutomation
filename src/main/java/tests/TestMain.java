@@ -8,6 +8,7 @@ import pages.Pages;
 
 import java.util.UUID;
 
+
 import static core.Constants.randomUsername;
 
 public class TestMain {
@@ -20,12 +21,6 @@ public class TestMain {
         generatedEmail = Pages.tenMinuteMailPage.emailAddressField.getValue();
         Selenide.closeWebDriver();
         return generatedEmail;
-    }
-
-    public void openMainPage() {
-        Selenide.open(Constants.TEST_URL);
-        WebDriverRunner.getWebDriver().manage().window().maximize();
-        Pages.navigationMenu.homeBtn.should(Condition.visible);
     }
 
     public static String useRandomUUID() {
@@ -53,6 +48,10 @@ public class TestMain {
         Pages.myAccount.registerBtn.should(Condition.visible).click();
         Pages.myAccount.myAccountTitle.should(Condition.visible);
         Pages.myAccount.welcomeMessage.shouldHave(Condition.partialText("Hello " + randomUsername));
-
+    }
+    public void openMainPage() {
+        Selenide.open(Constants.TEST_URL);
+        WebDriverRunner.getWebDriver().manage().window().maximize();
+        Pages.navigationMenu.homeBtn.should(Condition.visible);
     }
 }
