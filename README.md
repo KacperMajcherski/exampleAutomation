@@ -1,2 +1,2 @@
-# This is a set of example automated browser test using Java+Selenium with Selenide as a wrapper.
+# This is a set of example automated UI test using Java+Selenide framework.
 # Tested website: https://practice.sdetunicorns.com
