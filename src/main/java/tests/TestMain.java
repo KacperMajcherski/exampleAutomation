@@ -4,16 +4,24 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import core.Constants;
+import org.testng.annotations.BeforeTest;
 import pages.Pages;
 
+import java.io.IOException;
 import java.util.UUID;
 
 
-import static core.Constants.randomUsername;
+import static com.codeborne.selenide.Condition.*;
+import static core.Constants.*;
 
 public class TestMain {
 
     public String generatedEmail;
+
+    @BeforeTest
+    public void testPreparation() throws IOException {
+        openMainPage();
+    }
 
     public String getRandomEmail() {
         Selenide.open("https://10minutemail.net");
@@ -29,11 +37,12 @@ public class TestMain {
     }
 
     public void login(String username, String password) {
-        openMainPage();
-        Pages.navigationMenu.myAccountBtn.should(Condition.visible).click();
-        Pages.myAccount.loginUsernameField.should(Condition.empty).setValue(username);
-        Pages.myAccount.loginPasswordField.should(Condition.empty).setValue(password);
-        Pages.myAccount.loginBtn.should(Condition.visible).click();
+        Pages.navigationMenu.navigateMyAccount();
+        Pages.myAccountPage.loginUsernameField.shouldBe(empty).setValue(username);
+        Pages.myAccountPage.loginPasswordField.should(Condition.empty).setValue(password);
+        Pages.myAccountPage.loginBtn.shouldBe(visible).click();
+        Pages.myAccountPage.myAccountTitle.shouldBe(visible);
+        Pages.myAccountPage.welcomeMessage.shouldHave(partialText("Hello "+username));
     }
 
     public void registerUser() {
@@ -41,17 +50,25 @@ public class TestMain {
         getRandomEmail();
         openMainPage();
         //Navigate to 'My Account', register a new user with a random username and the temporary email
-        Pages.navigationMenu.myAccountBtn.should(Condition.visible).click();
-        Pages.myAccount.registrationUsernameField.setValue(randomUsername);
-        Pages.myAccount.registrationEmailField.setValue(generatedEmail);
-        Pages.myAccount.registrationPasswordField.setValue(Constants.password);
-        Pages.myAccount.registerBtn.should(Condition.visible).click();
-        Pages.myAccount.myAccountTitle.should(Condition.visible);
-        Pages.myAccount.welcomeMessage.shouldHave(Condition.partialText("Hello " + randomUsername));
+        Pages.navigationMenu.navigateMyAccount();
+        Pages.myAccountPage.registrationUsernameField.setValue(randomUsername);
+        Pages.myAccountPage.registrationEmailField.setValue(generatedEmail);
+        Pages.myAccountPage.registrationPasswordField.setValue(Constants.password);
+        Pages.myAccountPage.clickRegisterBtn();
+        Pages.myAccountPage.myAccountTitle.shouldBe(visible);
+        Pages.myAccountPage.welcomeMessage.shouldHave(Condition.partialText("Hello " + randomUsername));
     }
     public void openMainPage() {
         Selenide.open(Constants.TEST_URL);
         WebDriverRunner.getWebDriver().manage().window().maximize();
         Pages.navigationMenu.homeBtn.should(Condition.visible);
+    }
+
+    public void clearCartIfLeftoverItems() {
+        Pages.navigationMenu.navigateShoppingCart();
+            while (!Pages.shoppingCartPage.removeBtns.isEmpty()) {
+                Pages.shoppingCartPage.removeBtns.get(1).click();
+                Selenide.sleep(100);
+            }
     }
 }

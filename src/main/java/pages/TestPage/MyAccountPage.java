@@ -1,9 +1,12 @@
 package pages.TestPage;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.Pages;
+
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class MyAccount {
+public class MyAccountPage {
 
     public SelenideElement registrationUsernameField = $x("//input[@id='reg_username']");
     public SelenideElement registrationEmailField = $x("//input[@id='reg_email']");
@@ -16,4 +19,8 @@ public class MyAccount {
     public SelenideElement welcomeMessage = $x("//p[contains(text(),'Hello')]");
     public SelenideElement accDetailsTab = $x("//a[normalize-space()='Account details']");
     public SelenideElement accDetailsEmailInput = $x("//input[@id='account_email']");
+
+    public void clickRegisterBtn() {
+        Pages.myAccountPage.registerBtn.shouldBe(enabled).click();
+    }
 }

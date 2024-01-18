@@ -3,12 +3,13 @@ package pages;
 import pages.TenMinuteMail.TenMinuteMailPage;
 import pages.TestPage.*;
 
+
 public class Pages {
 
     public static TenMinuteMailPage tenMinuteMailPage = new TenMinuteMailPage();
     public static NavigationMenu navigationMenu = new NavigationMenu();
-    public static MyAccount myAccount = new MyAccount();
-    public static Shop shop = new Shop();
-    public static Cart cart = new Cart();
-    public static Checkout checkout = new Checkout();
+    public static MyAccountPage myAccountPage = new MyAccountPage();
+    public static ShopPage shopPage = new ShopPage();
+    public static ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+    public static CheckoutPage checkoutPage = new CheckoutPage();
 }
