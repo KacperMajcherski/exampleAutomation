@@ -6,10 +6,10 @@
 # Java JDK https://www.oracle.com/java/technologies/downloads/
 # Selenide 6.18.0+ https://selenide.org/quick-start.html
 # Put Selenide.jar anywhere and add the dependency to pom.xml:
-# <dependency>
-#    <groupId>com.codeborne</groupId>
-#    <artifactId>selenide</artifactId>
-#    <version>6.18.0</version>
-#    <scope>test</scope>
-# </dependency>
+// <dependency>
+//    <groupId>com.codeborne</groupId>
+//    <artifactId>selenide</artifactId>
+//    <version>6.18.0</version>
+//    <scope>test</scope>
+// </dependency>
 # Tutorial on how to start working with Selenide: https://selenide.org/quick-start.html
